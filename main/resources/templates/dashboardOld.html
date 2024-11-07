@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script src="dashboard.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<style>
+.section-form{
+overflow-y: scroll;
+/* per lo scroll verticale */
+
+}
+/* Riduce l'interlinea nel form */
+.section-form form label,
+.section-form form input {
+    margin-top: 1px;
+    margin-bottom: 1px;
+
+}
+form-control, .form-label {
+    line-height: 1.2; 
+}
+
+.main{
+ margin-top :420px;
+
+}
+
+
+</style>
+<body>
+    <header class="header">
+   <!-- posso usarla come navbar e mettereci  logo e alcuni link -->
+    link e logo
+    </header>
+
+    <section class="sidebar">
+        <!-- con i link al magazino o altro  -->
+        <button class="btnSide" id="btnIndex" >
+         <a class="nav-link "  href="/" role="button" aria-haspopup="true" >Index
+									</a>
+         
+        </button>
+        <button class="btnSide" id="btnStore" >
+          <a class="nav-link "  href="/vaiStore" role="button" aria-haspopup="true" >store
+									</a>
+        </button>
+        
+    </section>
+    <section class="section-form">
+   
+        <!-- metto il corpo della pagina.. ad esempio il form per inserire- lo faro collassabile  -->
+        
+          <h7>inserimento nuovi piani</h7>
+        <form method="POST" action="/gestioneMagazzino">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" required>
+
+    <label for="descrizione">Descrizione:</label>
+    <input type="text" name="descrizione" required>
+
+    <label for="prezzo">Prezzo:</label>
+    <input type="number" step="0.01" name="prezzo" required>
+
+    <label for="qntVenduti">Quantità Venduti:</label>
+    <input type="number" name="qntVenduti" required>
+
+    <button type="submit" class="btn">Aggiungi Piano</button>
+</form>
+
+            
+      
+        <button id="sectionFormBtn">Inserisci prodotti</button>
+            </section>
+
+    <main class="main">
+    catalogo + statistiche 
+<!-- metto il corpo della pagina.. ad esempio il catalogo  e o le statistiche -->
+
+<div class="container">
+<div class="col-lg-8">
+    <div class="row">
+        <div class="col-md-4" th:each="prodotto : ${lista}">
+            <div class="card border-dark" style="height: 350px; color: #333;">
+                <div class="card-content-wrapper" style="height: 200px;">
+                <!--  <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 100px; background: #f8f9fa;">
+                        <img th:src="${prodotto.url}" alt="Immagine Prodotto" class="img-fluid" style="object-fit: contain; height: 100px; padding-top:10px;">
+                    </div>  -->
+                    
+                    <div class="card-body text-center">
+                        <div style="height:80px">
+                            <h5 class="card-title" th:text="${prodotto.nome}"></h5>
+                        </div> 
+                        <p class="card-text">Prezzo: <span th:text="${prodotto.prezzo} + ' €'"></span></p>
+                        <form action="/---" method="post">
+                            <input type="hidden" name="nome" th:value="${prodotto.nome}">
+                            <button type="submit" class="btn btn-dark mt-2">MODIFICA</button>
+                        </form>
+                         <form action="/rimuoviDalMagazzino" method="post">
+                            <input type="hidden" name="nome" th:value="${prodotto.nome}">
+                            <button type="submit" class="btn btn-dark mt-2">Elimina Piano</button>
+                        </form>
+                    </div>
+                </div><!-- fine div card-content-wrapper -->
+
+                <div class="card-footer text-muted">
+                    <a class="text-dark" data-toggle="collapse" href="#card-details" role="button" aria-expanded="false" aria-controls="card-details">
+                        <strong>Dettagli</strong>
+                    </a>
+                    <div class="collapse" id="card-details">
+                        <div class="pt-3">
+                           
+                            <p>Descrizione: <span th:text="${prodotto.descrizione}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- eventuali statistiche -->
+
+
+</div>
+
+ 
+    </main>
+    
+</body>
+
+
+
+
+
+
+
+
+<script>
+document.getElementById('sectionFormBtn').addEventListener('click', function() {
+    const sectionForm = document.querySelector('.section-form');
+    sectionForm.classList.toggle('collapsed'); 
+    // Aggiunge/rimuove la classe 'collapsed'
+});</script>
+
+<!--   <script>
+document.getElementById('sectionFormBtn').addEventListener('click', function() {
+    const sectionForm = document.querySelector('.section-form');
+    const mainContent = document.querySelector('.main');
+   
+    sectionForm.classList.toggle('collapsed'); 
+
+    // Aggiunge/rimuove la classe 'collapsed'
+    sectionForm.classList.toggle('collapsed');
+    mainContent.classList.toggle('collapsed'); // Sposta le card verso il basso
+    </script>
+});
+  -->
+
+
+
+
+ <!-- Script Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

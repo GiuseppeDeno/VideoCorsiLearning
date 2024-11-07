@@ -1,0 +1,67 @@
+/* Stile generale */
+
+
+
+/* Card layout */
+.card {
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #333;
+    width: 100%;
+    max-width: 250px;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-color: #0056b3;
+}
+
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: #0056b3;
+    margin-bottom: 8px;
+}
+
+.card-text {
+    color: #666666;
+}
+
+/* Layout della griglia delle card */
+#feed {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.row-cols-1 .col, .row-cols-md-3 .col {
+    max-width: 45%;
+    /* ciascuna card sara al massimo il 45&del suo padre */
+    flex: 1 1 calc(50% - 20px);
+    /* primo 1 è fleg grow ovvero puo riempire lo spazio necessario , il secondo 1 shring per adattarsi a schermi piccoli */
+    /* cal(50&-20) è fleex basis ovvero la dimensione base del 50percento  della larghezza disponibile meno il gap tra le card */
+}
+
+/* Hover style per la card */
+.card:hover .card-title {
+    color: #333;
+}
+
+.card:hover .card-text {
+    color: #555;
+}

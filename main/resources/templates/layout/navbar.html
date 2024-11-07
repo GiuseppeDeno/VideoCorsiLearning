@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Navbar</title>
+    <!-- Link a Bootstrap CSS -->
+
+    
+        <!-- Script Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+    <!-- Link a CSS aggiuntivo per lo stile della pagina (se necessario)   <link rel="stylesheet" href="/css/stylesS.css">-->
+      
+    
+       
+       <style>
+       
+.navbar {
+    height: 40px !important;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00BFFF !important;
+}
+
+.navigation-wrap {
+    background-color: #343a40 !important;
+}
+
+       </style>
+ 
+</head>
+<body class="hero-anime">	
+
+	<!-- Navbar -->
+	<div th:fragment="navbar"> 
+	<!-- bg-dark text-white  oppure   bg-light  -->
+	<div class="navigation-wrap  bg-dark text-white start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="#" target="_blank">
+							<img src="/images/logoWhite.png" style="height:80px">
+						</a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li th:if="${title}=='Home Page'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link"  href="/" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								
+								<li th:if="${title}!='Home Page'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link"  href="/" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								<!-- <div class="dropdown-menu">
+										<a class="dropdown-item" href="#">Action</a>
+										<a class="dropdown-item" href="#">Another action</a>
+										<a class="dropdown-item" href="#">Something else here</a>
+										<a class="dropdown-item" href="#">Another action</a>
+									</div>   -->
+								<a></a>	
+								</li>
+								
+								<li th:if="${title}=='Blog'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="/vaiBlog">Blog</a>
+								</li>
+								<li th:if="${title}!='Blog'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/vaiBlog">Blog</a>
+								</li>
+								
+								<li th:if="${title}=='Dashboard'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="/vaiDashboard">LogInDash</a>
+								</li>
+								<li th:if="${title}!='Dashboard'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/vaiDashboard">LogInDash</a>
+								</li>
+								
+								<li th:if="${title}=='Store'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link "  href="/vaiStore" role="button" aria-haspopup="true" >Corsi</a>
+									
+								</li>
+								<li th:if="${title}!='Store'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link "  href="/vaiStore" role="button" aria-haspopup="true" >Corsi</a>
+								</li>
+								
+								<li th:if="${title}=='Carrello'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="/vaiCarrelloNav">Carrello <i class=" fa" >&#xf07a;</i>
+										<span th:if="${numCarrello>0}" class='badge badge-warning' id='lblCartCount'><span th:text="${numCarrello}"></span></span>
+									</a>
+								</li>
+								<li th:if="${title}!='Carrello'" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/vaiCarrelloNav">Carrello <i class=" fa" >&#xf07a;</i>
+										<span th:if="${numCarrello>0}" class='badge badge-warning' id='lblCartCount'><span th:text="${numCarrello}"></span></span>
+									</a>
+								</li>
+								
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">	
+									<a class="nav-link" href="#footer">Contact</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/vaiCarosello">Carosello</a>
+									
+								</li>
+							</ul>
+						</div>
+						
+					</nav>	
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</body>
+</html>

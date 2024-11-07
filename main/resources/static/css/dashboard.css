@@ -1,0 +1,136 @@
+*{
+    padding :0;
+    margin:0;
+
+
+}
+body {
+    height: 100vh;
+    display: grid;
+    /* //una griglia di 2 colonne e 3 righe  */
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: 50px 50px 1fr; /* oppure 50px 1fr 1fr*/
+    grid-template-areas:  
+    "  side  header"
+    "  side   sectionform "
+    " side    main";
+
+}
+
+
+.header {
+    grid-area: header;
+    background-color: #ffff;
+}
+
+
+.sidebar {
+    grid-area:side;
+    background-color: #1c1f23;
+    position: relative; /* Importante per rendere relativo ai bottoni index e store*/
+}
+
+.btnSide__NON USATO{
+   
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+
+#btnIndex{
+    position:absolute;
+    top:200px;
+    left:10px;
+    
+
+}
+#btnStore{
+    position:absolute;
+    top:200px;
+    right:10px;
+}
+
+
+.main {
+    grid-area:main;
+    background-color: #e6e8f0;
+}
+
+
+
+
+
+
+
+
+
+/* //section form è simile al main ma lo farò collassabile  */
+.section-form {
+    grid-area: sectionform;
+    background-color: #c3c5ca;
+    position: relative; 
+
+    transition: height 0.3s ease;
+    overflow: hidden;
+    height: 400px; /* Altezza aperta */
+}
+/* posiziono il bottone per aprire la section-form  */
+
+
+/*#sectionFormBtn {
+    position: absolute;
+  
+    right: 10px; 
+    
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+*/
+.section-form.collapsed {
+    height: 70px; /* Altezza quando collassata */
+}
+
+
+
+
+
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); 
+}
+
+/* Stile per i pulsanti neri */
+.btn-dark {
+    background-color: #000; 
+    border: none; 
+    color: #fff; 
+    transition: background-color 0.3s ease;
+}
+
+
+.btn-dark:hover {
+    background-color: #333; 
+}
+
+
+/* Centro il testo nelle card  */
+.card {
+    width: 260px; 
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    border-radius: 8px; 
+    background-color: #343a40; 
+    color: #fff; 
+    text-align: center;
+    transition: box-shadow 0.3s ease; 
+}
+
+

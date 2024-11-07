@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script src="dashboard.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- per le stasticche di vendita ed usare le chart di google -->
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   	
+</head>
+<style>
+.section-form{
+    overflow-y: scroll;
+    /* per lo scroll verticale */
+}
+.section-form form label,
+.section-form form input {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.form-control, .form-label {
+    line-height: 1.2; 
+}
+.main{
+    margin-top: 420px;
+}
+
+#sectionFormBtn{
+background-color: #007bff; 
+    color: white; 
+    padding: 0 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: box-shadow 0.3s ease; /* Transizione per l'ombra */
+}
+#sectionFormBtn:hover{
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.btn{background-color: #007bff; 
+    color: white!important; 
+    padding: 0 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+
+}
+
+#piechart{
+ margin-top:200px;
+}
+
+
+</style>
+<!-- script del prof modificato per le statistiche di vendita  -->
+  <script>
+    window.onload = gestoreLoad;
+    
+    function gestoreLoad(){
+    	
+    	
+    	google.charts.load('current', {'packages':['corechart']});
+    	let data = []
+    	
+        google.charts.setOnLoadCallback(getCharts);
+    	
+    	
+    	
+
+        
+    	async function getCharts() {
+    		
+    		
+    	    try {
+    	        // Effettua una richiesta fetch e attende la risposta
+    	        const response = await fetch('/getLista');
+
+    	        // Verifica se la risposta è andata a buon fine
+    	        if (!response.ok) {
+    	            throw new Error('Network response was not ok');
+    	        }
+
+    	        // Converte la risposta in formato JSON e la attende
+    	         data = await response.json();
+    	        
+    	        //stampare il primo oggetto della lista
+    	        console.log(data[1]['nome']);
+    	        
+    	        
+    	        
+    	        
+    	        
+    	         let DataArray = []
+    	    		DataArray.push(["nome", "venduti"])
+    		        
+    		        for (let i = 0; i < data.length; i++) {
+    		        	
+    		        	DataArray.push([data[i].nome, data[i].qntVenduti])
+    		        }
+    		      
+    		          var options = {
+    		            title: 'Dati di vendita'
+    		          };
+
+    		       // Converte l'array DataArray in un oggetto DataTable
+    		         let dataTable = google.visualization.arrayToDataTable(DataArray);
+    		          
+    		          let chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    	    		
+
+    		          chart.draw(dataTable, options);
+    		          
+    		       /*   var options = {
+    		                  title: 'Istogramma',
+    		                  legend: { position: 'none' },
+    		                };
+
+    		                var chart1 = new google.visualization.Histogram(document.getElementById('chart_div'));
+    		                chart1.draw(dataTable, options);*/
+    	        
+    	        
+
+    	        // Utilizza i dati ottenuti
+    	        console.log(data);
+    	    } catch (error) {
+    	        // Gestisce eventuali errori
+    	        console.error('There was a problem:', error);
+    	    }
+    	}
+    	
+    	
+
+    	
+    	
+    	   
+    }
+    
+    
+    
+    
+    
+    
+    </script>
+
+
+
+<body>
+    <header class="header">
+    <a href="/" class="navbar-brand  justify-content-center" >
+							<img src="/images/logoBlack.jpg" style="height:80px;">
+						</a>	
+						
+         <button id="1">Inserisci prodotti</button>
+    </header>
+
+    <section class="sidebar">
+   <h4 class="blue-text center mt-4">Statistiche di vendita</h4>
+
+    
+        <button class="btnSide btn" id="btnIndex">
+            <a class="nav-link" href="/" role="button" aria-haspopup="true">Index</a>
+        </button>
+        <button class="btnSide btn" id="btnStore">
+            <a class="nav-link" href="/vaiStore" role="button" aria-haspopup="true">Store</a>
+        </button>
+        
+        
+        
+        <!-- qui viene visualizzato il primo grafico delle statistiche -->
+         <div class="container text-center" id="piechart" style="width: 300px; height: 300px;"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </section>
+
+    <section class="section-form">
+        <button class="btn"  id="sectionFormBtn">inserimento nuovi piani</button>
+        <form method="POST" action="/gestioneMagazzino">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" required>
+
+            <label for="descrizione">Descrizione:</label>
+            <input type="text" name="descrizione" required>
+
+            <label for="prezzo">Prezzo:</label>
+            <input type="number" step="0.01" name="prezzo" required  min="0">
+            
+             <label for="img">Immagine:</label>
+            <input type="text"  name="img" required>
+            
+               <label for="video1"> inserisci video 1:</label>
+            <input type="text"  name="video1" required>
+               <label for="video2">inserisci video 2 :</label>
+            <input type="text"  name="video2" >
+            
+               <label for="video3">inserisci video 3:</label>
+            <input type="text"  name="video3" >
+              <label for="video4">inserisci video 4:</label>
+            <input type="text"  name="video4" >
+            
+
+            <label for="qntVenduti">Quantità Venduti:</label>
+            <input type="number" name="qntVenduti" min="0" >
+
+            <button type="submit" class="btn">Aggiungi Piano</button>
+        </form>
+        
+       
+    </section>
+
+    <main class="main">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Prezzo (€)</th>
+                            <th>Descrizione</th>
+                            <th>Quantità Venduti</th>
+                            <th>Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="prodotto : ${lista}">
+                            <td th:text="${prodotto.nome}">Nome prodotto</td>
+                            <td th:text="${prodotto.prezzo}">Prezzo</td>
+                            <td th:text="${prodotto.descrizione}">Descrizione</td>
+                            <td th:text="${prodotto.qntVenduti}">Quantità</td>
+                            <td>
+                                <form action="/modificaProdotto" method="post" style="display:inline;">
+                                    <input type="hidden" name="nome" th:value="${prodotto.nome}">
+                                    <button type="submit" class="btn btn-dark">MODIFICA</button>
+                                </form>
+                                <form action="/rimuoviDalMagazzino" method="post" style="display:inline;">
+                                    <input type="hidden" name="nome" th:value="${prodotto.nome}">
+                                    <button type="submit" class="btn btn-dark" >Elimina</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('sectionFormBtn').addEventListener('click', function() {
+            const sectionForm = document.querySelector('.section-form');
+            sectionForm.classList.toggle('collapsed'); 
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

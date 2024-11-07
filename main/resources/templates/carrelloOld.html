@@ -1,0 +1,35 @@
+  <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+  
+  <div class="container">
+               
+                <h4 style="margin-top:79px;">Carrello </h4>
+                <div id="carrello">
+                    <div th:each="item : ${carrello}" class="cart-item">
+                        <span th:text="${item.nome}"></span>
+                        <span th:text="${item.descrizione}"></span>
+                        <span th:text="${item.img}"></span> <!-- Usa "qnt" se il metodo nella classe pcComprati si chiama getQnt -->
+                        <form action="/rimuoviDalCarrello" method="post">
+                            <input type="hidden" name="nome" th:value="${item.nome}">
+                            <button type="submit" class="btn red btn-small">Rimuovi</button>
+                        </form>
+                    </div>
+                    <h5>Totale: <span th:text="${somma} + ' €'"></span></h5>
+                    <form action="/confermaAcquisto" method="post">
+                        <button type="submit" class="btn">Conferma Acquisto</button>
+                    </form>
+                </div>
+            </div>
+            
+      
+            
+            </body>
+            </html>

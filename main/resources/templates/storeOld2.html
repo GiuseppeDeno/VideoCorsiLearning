@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+</head>
+
+       <style>
+       
+.navbar {
+    height: 60px !important;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00BFFF !important;
+}
+
+.navigation-wrap {
+    background-color: #343a40 !important;
+}
+#title{
+margin-top:120px!important;
+
+}
+       </style>
+
+<body>
+<div th:include="layout/navbar :: navbar"></div>
+
+<section class="container mb-5 mt-5">
+
+<div id="title" class="container , mt-5 justify-contente-center text-center" > <h2> STORE </h2> </div>
+
+    <div class="row text-center justify-content-center mt-5">
+        <div class="col-md-6" th:each="prodotto : ${lista}">
+            <div class="card border-dark mb-4" style="height: 450px; color: #333;">
+                <div class="card-content-wrapper" style="height: 200px;">
+                     <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 80px; background: #f8f9fa;">
+                            <img th:src="${prodotto.img}" alt="Immagine Prodotto" class="img-fluid" style="object-fit: contain; height: 100px; padding-top:10px;">
+                        </div>  
+                    
+                    <div class="card-body text-center">
+                        <div style="height:80px">
+                            <h5 class="card-title" th:text="${prodotto.nome}"></h5>
+                        </div> 
+                        <p class="card-text">Prezzo: <span th:text="${prodotto.prezzo} + ' €'"></span></p>
+                        <form action="/aggiungiCarrello" method="post">
+                            <input type="hidden" name="nome" th:value="${prodotto.nome}">
+                            <button type="submit" class="btn btn-dark mt-2">Aggiungi Carrello</button>
+                        </form>
+                    </div>
+                </div><!-- fine div card-content-wrapper -->
+
+                <div class="card-footer text-muted">
+                    <a class="text-dark" data-toggle="collapse" href="#card-details" role="button" aria-expanded="false" aria-controls="card-details">
+                        <strong>Dettagli</strong>
+                    </a>
+                    <div class="collapse" id="card-details">
+                        <div class="pt-3">
+                            <p>Descrizione: <span th:text="${prodotto.descrizione}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- footer -->
+
+<div th:include="layout/footer :: footer"></div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</html>

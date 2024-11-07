@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-VZ68aVsQZjo79VVv6+l8Ydb0+pYzD9IDg1dswLB8F87LBOHZDCKT2Z2ATkcccyq9PIroiyuM3M3o4jkkMJ7ewQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* le icone di github bianche ma non le vedo*/
+.text-white {
+    color: white !important;
+}
+
+</style>
+</head>
+<body>
+<div th:fragment="footer"> 
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Sezione Copyright -->
+            <div class="col-md-4 text-md-left text-center mb-2 mb-md-0">
+                <p class="mb-0">© 2024</p>
+            </div>
+            
+            <!-- Sezione Link GitHub -->
+            <div class="col-md-4 text-center mb-2 mb-md-0">
+                <a href="1" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="2" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://github.com/GiuseppeDeno" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="4" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="h5" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+            </div>
+            
+            <!-- Sezione Logo e Spazio Vuoto -->
+            <div class="col-md-4 text-md-right text-center">
+                <img src="/images/logoWhite.png" alt="Logo" style="height: 40px;">
+                <div class="mt-2"></div> <!-- Div vuoto per contenuti futuri -->
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
