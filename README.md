@@ -1,13 +1,16 @@
 # Video Learning Courses
-## Project Overview
-## Technologies Used
-## Features
-### Index Page
-### Store Section (Courses)
-### Shopping Cart and Purchase Confirmation
-### Admin Dashboard - Plan Management
-### Sales Statistics
-## Database Structure
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+  - [Index Page](#index-page)
+  - [Store Section (Courses)](#store-section-courses)
+  - [Shopping Cart and Purchase Confirmation](#shopping-cart-and-purchase-confirmation)
+  - [Admin Dashboard - Plan Management](#admin-dashboard-plan-management)
+  - [Sales Statistics](#sales-statistics)
+- [Database Structure](#database-structure)
 
 ![Logo Video Learning Courses](imagesShow/logoBlack.jpg) <!-- Logo or main image of the project -->
 
@@ -45,17 +48,18 @@ Once the user has selected the plans they wish to purchase, they can proceed to 
 
 ### Admin Dashboard - Plan Management
 Administrators have access to the **dashboard** where they can add new subscription plans, each with up to 4 videos. Plans can also be **deleted** in this section.
-![Admib Page](imagesShow/7c.jpg)
+
+![Admin Page](imagesShow/7c.jpg)
 
 ### Sales Statistics
 The dashboard includes a **pie chart** that uses **Google Charts** to display the sales percentages of each plan. The statistics automatically update based on the orders placed.
 
-![Sales Chart](![Cart Page](imagesShow/8c.jpg).jpg)
+![Sales Chart](imagesShow/8c.jpg)
 
 ## Database Structure
 The project uses a **MySQL** database to manage the information related to the subscription plans and orders. Each plan includes a name, description, price, image, and up to 4 videos.
 
-![Database Schema](![Cart Page](imagesShow/db.jpg).jpg)
+![Database Schema](imagesShow/db.jpg)
 
 ---
 
