@@ -1,6 +1,6 @@
 # Video Learning Courses
 
-![Logo Video Learning Courses](imagesShow/logo.jpg) <!-- Logo or main image of the project -->
+![Logo Video Learning Courses](imagesShow/logoBlack.jpg) <!-- Logo or main image of the project -->
 
 ## Project Overview
 
