@@ -1,4 +1,13 @@
 # Video Learning Courses
+## Project Overview
+## Technologies Used
+## Features
+### Index Page
+### Store Section (Courses)
+### Shopping Cart and Purchase Confirmation
+### Admin Dashboard - Plan Management
+### Sales Statistics
+## Database Structure
 
 ![Logo Video Learning Courses](imagesShow/logoBlack.jpg) <!-- Logo or main image of the project -->
 
